@@ -1,0 +1,19 @@
+{
+  "name": "aboba",
+  "version": "1.0.0",
+  "description": "fuck u",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon entry_point.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cross-env": "^10.0.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
