@@ -1,6 +1,6 @@
 console.log("merge conflict resolving.js file");
-console.log("буубубубубубубу");
+console.log("1123123");
 
-if(12321312==1) {
-	console.log("иди нахуй");
+if(1==123) {
+	console.log("12321312");
 }
