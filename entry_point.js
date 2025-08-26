@@ -11,6 +11,10 @@ router.get('/users', (req, res) => {
     res.end('this is user table');
 })
 
+router.get('/', (req, res) => {
+    res.end('this is home page');
+});
+
 router.get('/posts', (req, res) => {
     res.end('this is posts table');
 })

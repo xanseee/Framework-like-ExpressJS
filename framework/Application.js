@@ -27,7 +27,7 @@ module.exports = class Application {
         return http.createServer((req, res) => {
             const emitted = this.emitter.emit(this._getRouterMask(req.url, req.method), req, res);
             if(!emitted) {
-                res.end("This web page isnt exist");
+                res.end("This web page isn't exist");
             }
         })
     }
