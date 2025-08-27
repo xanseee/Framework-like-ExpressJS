@@ -1,10 +1,16 @@
 const http = require('http');
 const EventEmitter = require('events');
+const response = require('./middlewares/Response')
 
 module.exports = class Application {
     constructor() {
         this.emitter = new EventEmitter();
         this.server = this._createServer();
+        this.middlewares = [response];
+    }
+
+    use(middleware) {
+        this.middlewares.push(middleware);
     }
 
     listen(port, callback) {
@@ -24,7 +30,16 @@ module.exports = class Application {
     }
 
     _createServer() {
-        return http.createServer((req, res) => {
+        return http.createServer(async (req, res) => {
+            for(const middleware of this.middlewares) {
+                await new Promise((resolve, reject) => {
+                    middleware(req, res, (err) => {
+                        if(err) reject(err);
+                        else resolve();
+                    });
+                })
+            };
+
             const emitted = this.emitter.emit(this._getRouterMask(req.url, req.method), req, res);
             if(!emitted) {
                 res.end("This web page isn't exist");
